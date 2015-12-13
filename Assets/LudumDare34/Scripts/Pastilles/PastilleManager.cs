@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PastilleManager : Singleton<PastilleManager> {
 
@@ -10,6 +11,7 @@ public class PastilleManager : Singleton<PastilleManager> {
     public int minZoneValue = 3;
     public int maxZoneValue = 8;
 
+    public float minDistance = 1f;
 
     public GameObject[] pastilles;
     
@@ -18,9 +20,12 @@ public class PastilleManager : Singleton<PastilleManager> {
     private int currentZonePastilleNb = 0;
     private int pastilleLeft = 0;
 
+    private List<Vector3> positions;
+
 	// Use this for initialization
 	void Start () {
         pastillesCounter = new int[pastilles.Length];
+        positions = new List<Vector3>();
         SpawnPatilles();
         SetNewZone();
 	}
@@ -34,15 +39,36 @@ public class PastilleManager : Singleton<PastilleManager> {
         {
             for (int j = 0; j < nbEach; j++)
             {
-                spawnPosition.x = Random.Range(worldMinBound.x, worldMaxBound.x);
-                spawnPosition.y = Random.Range(worldMinBound.y, worldMaxBound.y);
+                do
+                {
+                    spawnPosition.x = Random.Range(worldMinBound.x, worldMaxBound.x);
+                    spawnPosition.y = Random.Range(worldMinBound.y, worldMaxBound.y);
+                }
+                while (isTooClose(spawnPosition));
+
+
 
                 buf = Instantiate(pastilles[i], spawnPosition, Quaternion.identity) as GameObject;
                 buf.GetComponent<Pastille>().PastilleGrabEvent += PastilleGrabed;
 
+                positions.Add(buf.transform.position);
+
                 pastilleLeft++;
             }
         }
+    }
+
+    private bool isTooClose(Vector3 pos)
+    {
+        for (int i = 0; i < positions.Count; i++)
+        {
+            if(Vector3.Distance(pos, positions[i]) < minDistance)
+            {
+                return true;
+            }
+
+        }
+        return false;
     }
 	
     private void PastilleGrabed(PastilleType type)
