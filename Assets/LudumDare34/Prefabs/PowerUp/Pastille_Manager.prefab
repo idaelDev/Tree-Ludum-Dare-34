@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &147292
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 409748}
+  - 114: {fileID: 11459358}
+  m_Layer: 0
+  m_Name: Pastille_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &409748
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147292}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11459358
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c7e21846e4d374b94c3e2a0f2ad509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldMinBound: {x: -10, y: 0}
+  worldMaxBound: {x: 10, y: 100}
+  nbPastilles: 100
+  pastilles:
+  - {fileID: 173888, guid: 9a93da5f6b85a87419d4d35dc0b5497a, type: 2}
+  - {fileID: 141914, guid: ca49c1ce947acf841883a9b1a2bb52e5, type: 2}
+  - {fileID: 129406, guid: 47da2f4d8cd1fea40bf77c649b713d8b, type: 2}
+  - {fileID: 152046, guid: 2f7e467130975184fab2e493ab1235b2, type: 2}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 147292}
+  m_IsPrefabParent: 1
