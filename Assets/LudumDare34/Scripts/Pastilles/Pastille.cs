@@ -21,6 +21,8 @@ public class Pastille : MonoBehaviour {
 
 	public void OnBeat()
 	{
+		if (this.GetComponentInChildren<Animator>())
+			GetComponentInChildren<Animator>().Play("Rotate");
 		Debug.Log("bbbbeat");
 
 	}
