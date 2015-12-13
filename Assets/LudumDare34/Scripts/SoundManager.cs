@@ -10,6 +10,7 @@ public class SoundManager :  Singleton<SoundManager>{
     public AudioSource Far;
 
     public float fadeTime = 0.5f;
+    public float musicMaxVolume = 0.8f;
 
     private AudioSource current;
 
@@ -37,8 +38,8 @@ public class SoundManager :  Singleton<SoundManager>{
         float t=0;
         while(t<fadeTime)
         {
-            old.volume = Mathf.Lerp(1, 0, t / fadeTime);
-            next.volume = Mathf.Lerp(0, 1, t / fadeTime);
+            old.volume = Mathf.Lerp(musicMaxVolume, 0, t / fadeTime);
+            next.volume = Mathf.Lerp(0, musicMaxVolume, t / fadeTime);
             t += Time.deltaTime;
             yield return 0;
         }
