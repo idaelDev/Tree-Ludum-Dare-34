@@ -466,6 +466,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11487974, guid: 03eb339b361d2474dab016fcf9b6a0b9, type: 2}
+      propertyPath: paint.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 03eb339b361d2474dab016fcf9b6a0b9, type: 2}
       propertyPath: m_LocalPosition.x
       value: 2
@@ -510,6 +514,22 @@ Prefab:
       propertyPath: numPlayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11487974, guid: 03eb339b361d2474dab016fcf9b6a0b9, type: 2}
+      propertyPath: wait
+      value: .25
+      objectReference: {fileID: 0}
+    - target: {fileID: 21222230, guid: 03eb339b361d2474dab016fcf9b6a0b9, type: 2}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11487974, guid: 03eb339b361d2474dab016fcf9b6a0b9, type: 2}
+      propertyPath: paint.Array.data[0]
+      value: 
+      objectReference: {fileID: 122926, guid: aeb904bd5da5f31408843ba354163ef7, type: 2}
+    - target: {fileID: 11487974, guid: 03eb339b361d2474dab016fcf9b6a0b9, type: 2}
+      propertyPath: paint.Array.data[1]
+      value: 
+      objectReference: {fileID: 129320, guid: 2071e939c5ce50448bd5bb6a419059a4, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03eb339b361d2474dab016fcf9b6a0b9, type: 2}
   m_IsPrefabParent: 0
@@ -524,6 +544,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11487974, guid: 03eb339b361d2474dab016fcf9b6a0b9, type: 2}
+      propertyPath: paint.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 03eb339b361d2474dab016fcf9b6a0b9, type: 2}
       propertyPath: m_LocalPosition.x
       value: -2
@@ -564,6 +588,22 @@ Prefab:
       propertyPath: numPlayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 21222230, guid: 03eb339b361d2474dab016fcf9b6a0b9, type: 2}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11487974, guid: 03eb339b361d2474dab016fcf9b6a0b9, type: 2}
+      propertyPath: wait
+      value: .25
+      objectReference: {fileID: 0}
+    - target: {fileID: 11487974, guid: 03eb339b361d2474dab016fcf9b6a0b9, type: 2}
+      propertyPath: paint.Array.data[0]
+      value: 
+      objectReference: {fileID: 122926, guid: aeb904bd5da5f31408843ba354163ef7, type: 2}
+    - target: {fileID: 11487974, guid: 03eb339b361d2474dab016fcf9b6a0b9, type: 2}
+      propertyPath: paint.Array.data[1]
+      value: 
+      objectReference: {fileID: 129320, guid: 2071e939c5ce50448bd5bb6a419059a4, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03eb339b361d2474dab016fcf9b6a0b9, type: 2}
   m_IsPrefabParent: 0
