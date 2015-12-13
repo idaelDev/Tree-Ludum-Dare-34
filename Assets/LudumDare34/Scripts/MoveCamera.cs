@@ -33,6 +33,7 @@ public class MoveCamera : MonoBehaviour
 	}
 
 	// Update is called once per frame
+
 	void Update()
 	{
 		int newZoom = GetTargetZoomLevel();
@@ -58,9 +59,10 @@ public class MoveCamera : MonoBehaviour
 	}
 
 
-		
 
-	IEnumerator changeZoom() {
+
+	IEnumerator changeZoom()
+	{
 		coroutineRunning = true;
 		while (true)
 		{
@@ -77,24 +79,16 @@ public class MoveCamera : MonoBehaviour
 		}
 
 		//coroutineRunning = false;
-    }
+	}
+
+
 
 	private int GetTargetZoomLevel()
 	{
 		int newTargetZoom = 0;
 		float distance = Vector3.Distance(p1.position, p2.position);
-		Debug.Log(distance);
-		if (distance < 12)
-			Camera.main.orthographicSize = 4;
-		else if (distance > 22)
-			Camera.main.orthographicSize = 16;
-		else Camera.main.orthographicSize = 8;
-		this.transform.parent.position = new Vector3(
-			this.transform.parent.position.x,
-			Mathf.Min(p1.position.y, p2.position.y),
-			this.transform.parent.position.z);
 
-		Debug.Log(CenterOfVectors(new Vector3[] { p1.position, p2.position}));
+		if (distance < 12)  //Max
 			newTargetZoom = 0;
 		else if (distance > 22) //Min
 			newTargetZoom = 2;
