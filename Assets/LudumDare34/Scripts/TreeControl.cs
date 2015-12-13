@@ -16,14 +16,17 @@ public class TreeControl : MonoBehaviour {
     private const float ANGLE_CONSTRAINT = 2.2f;
 
     private string playerHorizontal;
+    private string playerFire;
 
 	// Use this for initialization
 	void Start()
 	{
 		if(numPlayer == 0) {
             playerHorizontal = "Horizontal_p1";
+            playerFire = "Fire_p1";
         } else {
             playerHorizontal = "Horizontal_p2";
+            playerFire = "Fire_p2";
 		}
 	}
 
@@ -33,6 +36,14 @@ public class TreeControl : MonoBehaviour {
         float rotate = Input.GetAxisRaw(playerHorizontal);
         //..
         Rotation(rotate);
+
+        if(Input.GetButtonDown(playerFire))
+        {
+            if(currentpowerUp != null)
+            {
+                currentpowerUp.Catched();
+            }
+        }
 	}
 
     public void Rotation(float rotate)
