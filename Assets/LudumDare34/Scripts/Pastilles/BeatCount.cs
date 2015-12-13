@@ -16,6 +16,8 @@ public class BeatCount : MonoBehaviour {
 	public delegate void BeatDelegate();
 	public static event BeatDelegate BeatEvent;
 
+    public bool canCountBeat = false;
+
 	// Use this for initialization
 	void Start () {
         timeOffset = 60.0f / bpm;
@@ -25,12 +27,18 @@ public class BeatCount : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    t = Mo.time;
-
-        if (t > expectedTime)
+        if (canCountBeat)
         {
-			BeatEvent();
-            expectedTime += timeOffset;
+            t = Mo.time;
+
+            if (t > expectedTime)
+            {
+                BeatEvent();
+                expectedTime += timeOffset;
+            }
         }
 	}
+
+
+
 }

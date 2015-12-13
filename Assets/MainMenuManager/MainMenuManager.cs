@@ -12,7 +12,7 @@ public class MainMenuManager : Singleton<MainMenuManager> {
     public void OnStartGame()
     {
         HideAllCanvas();
-        GameManager.Instance.gameStarted = true;
+        GameManager.Instance.StartGame();
     }
 
     public void OnQuitGame()

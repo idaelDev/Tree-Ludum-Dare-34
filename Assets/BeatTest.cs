@@ -8,7 +8,6 @@ public class BeatTest : MonoBehaviour {
     public float bpm = 0f;
     public float beat = 0.0f;
     public float beatTot = 0.0f;
-    static bool rhythmAble = false;
     public AudioSource Mo;
     private float expectedTime;
     private float timeOffset;
