@@ -50,9 +50,9 @@ public class PastilleManager : Singleton<PastilleManager> {
 
                 buf = Instantiate(pastilles[i], spawnPosition, Quaternion.identity) as GameObject;
                 buf.GetComponent<Pastille>().PastilleGrabEvent += PastilleGrabed;
-
                 positions.Add(buf.transform.position);
 
+                buf.transform.SetParent(transform);
                 pastilleLeft++;
             }
         }
