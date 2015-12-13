@@ -60,7 +60,6 @@ public class MoveCamera : MonoBehaviour
 	{
 		while (true)
 		{
-			Debug.Log(targetZoom + " " + currentZoom + " " + oldZoom);
 			if (oldZoom != currentZoom)
 			{
 				if (lerpZoomValue <= 0.99f)
