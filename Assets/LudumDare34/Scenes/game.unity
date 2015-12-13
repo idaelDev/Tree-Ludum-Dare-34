@@ -216,7 +216,6 @@ GameObject:
   - 124: {fileID: 1234709127}
   - 81: {fileID: 1234709126}
   - 114: {fileID: 1234709131}
-  - 61: {fileID: 1234709132}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -304,19 +303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p1: {fileID: 1388320040}
   p2: {fileID: 567353801}
---- !u!61 &1234709132
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1234709125}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -.178722858}
-  serializedVersion: 2
-  m_Size: {x: 12, y: 6.85744572}
+  displayZones: []
 --- !u!1001 &1339776573
 Prefab:
   m_ObjectHideFlags: 0
@@ -330,7 +317,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 03eb339b361d2474dab016fcf9b6a0b9, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -3.44000006
+      value: -2.56999993
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 03eb339b361d2474dab016fcf9b6a0b9, type: 2}
       propertyPath: m_LocalPosition.z
@@ -388,7 +375,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 03eb339b361d2474dab016fcf9b6a0b9, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -3.44000006
+      value: -2.56999993
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 03eb339b361d2474dab016fcf9b6a0b9, type: 2}
       propertyPath: m_LocalPosition.z
