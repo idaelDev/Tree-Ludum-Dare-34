@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class draw2 : MonoBehaviour {
+public class Draw : MonoBehaviour {
 
 	public GameObject paint;
 	public Transform treeParent;
@@ -14,10 +14,10 @@ public class draw2 : MonoBehaviour {
 		precPos = Vector3.up;
 		tc = this.GetComponent<TreeControl>();
     }
-
-	// Update is called once per frame
+	
 	void FixedUpdate()
 	{
+		//ToDo Coroutine? 
 		GameObject g = Instantiate(paint) as GameObject;
 
 		//g.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 4f);

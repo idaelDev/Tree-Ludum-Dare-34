@@ -45,10 +45,5 @@ public class TreeControl : MonoBehaviour {
 		direction.Normalize();
 		
 		this.transform.position += direction*Time.deltaTime * speed;
-		/*
-		float rot_z = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-		transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
-		*/
-
 	}
 }
