@@ -7,14 +7,22 @@ public class PastilleManager : Singleton<PastilleManager> {
     public Vector2 worldMaxBound;
 
     public int nbPastilles = 100;
+    public int minZoneValue = 3;
+    public int maxZoneValue = 8;
+
 
     public GameObject[] pastilles;
+    
     private int[] pastillesCounter;
+    private int zoneValue = 0;
+    private int currentZonePastilleNb = 0;
+    private int pastilleLeft = 0;
 
 	// Use this for initialization
 	void Start () {
         pastillesCounter = new int[pastilles.Length];
         SpawnPatilles();
+        SetNewZone();
 	}
 
     void SpawnPatilles()
@@ -31,14 +39,33 @@ public class PastilleManager : Singleton<PastilleManager> {
 
                 buf = Instantiate(pastilles[i], spawnPosition, Quaternion.identity) as GameObject;
                 buf.GetComponent<Pastille>().PastilleGrabEvent += PastilleGrabed;
+
+                pastilleLeft++;
             }
         }
     }
 	
     private void PastilleGrabed(PastilleType type)
     {
-
+        for (int i = 0; i < pastilles.Length; i++)
+        {
+            if(type == pastilles[i].GetComponent<Pastille>().type)
+            {
+                pastillesCounter[i]++;
+            }
+        }
+        currentZonePastilleNb++;
+        pastilleLeft--;
+        if(currentZonePastilleNb >= zoneValue)
+        {
+            SetNewZone();
+        }
     }
 
-
+    private void SetNewZone()
+    {
+        zoneValue = Mathf.Min(Random.Range(minZoneValue, maxZoneValue), pastilleLeft);
+        currentZonePastilleNb = 0;
+        Debug.Log("New Zone : " + zoneValue);
+    }
 }

@@ -13,7 +13,7 @@ public class MoveCamera : MonoBehaviour {
 	// Update is called once per frame
 	void Update() {
 		float distance = Vector3.Distance(p1.position, p2.position);
-		Debug.Log(distance);
+		//Debug.Log(distance);
 		if (distance < 12)
 			Camera.main.orthographicSize = 4;
 		else if (distance > 22)
@@ -24,7 +24,7 @@ public class MoveCamera : MonoBehaviour {
 			Mathf.Min(p1.position.y, p2.position.y),
 			this.transform.parent.position.z);
 
-		Debug.Log(CenterOfVectors(new Vector3[] { p1.position, p2.position}));
+		//Debug.Log(CenterOfVectors(new Vector3[] { p1.position, p2.position}));
     }
 
 	public Vector3 CenterOfVectors(Vector3[] vectors)
