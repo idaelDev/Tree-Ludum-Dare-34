@@ -23,20 +23,17 @@ public class Pastille : MonoBehaviour {
 	{
 		if (this.GetComponentInChildren<Animator>())
 			GetComponentInChildren<Animator>().Play("Rotate");
-		Debug.Log("bbbbeat");
 
 	}
 
 	void OnBecameInvisible()
 	{
 		BeatCount.BeatEvent -= this.OnBeat;
-		Debug.Log("invisible");
 	}
 
 	void OnBecameVisible()
 	{
 		BeatCount.BeatEvent += OnBeat;
-		Debug.Log("visible");
 	}
 
 }

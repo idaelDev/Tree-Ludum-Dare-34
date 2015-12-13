@@ -341,6 +341,7 @@ MonoBehaviour:
   Close: {fileID: 8283168}
   Far: {fileID: 8224580}
   fadeTime: 5
+  musicMaxVolume: .800000012
 --- !u!114 &11492006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -354,7 +355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   t: 0
   deltaTime: 0
-  bpm: 0
+  bpm: 55
   beat: 0
   beatTot: 0
   Mo: {fileID: 0}

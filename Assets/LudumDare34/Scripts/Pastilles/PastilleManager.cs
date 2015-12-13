@@ -7,6 +7,11 @@ public class PastilleManager : Singleton<PastilleManager> {
     public Vector2 worldMinBound;
     public Vector2 worldMaxBound;
 
+	public GameObject cercle;
+	public Sprite spriteCercle1;
+	public Sprite spriteCercle2;
+
+
     public int nbPastilles = 100;
     public int minZoneValue = 3;
     public int maxZoneValue = 8;
@@ -32,28 +37,42 @@ public class PastilleManager : Singleton<PastilleManager> {
 
     void SpawnPatilles()
     {
+		int cpt = 0;
         GameObject buf;
         Vector3 spawnPosition  = Vector3.zero;
         int nbEach = nbPastilles / pastilles.Length;
         for (int i = 0; i < pastilles.Length; i++)
         {
-            for (int j = 0; j < nbEach; j++)
-            {
-                do
-                {
-                    spawnPosition.x = Random.Range(worldMinBound.x, worldMaxBound.x);
-                    spawnPosition.y = Random.Range(worldMinBound.y, worldMaxBound.y);
-                }
-                while (isTooClose(spawnPosition));
+			for (int j = 0; j < nbEach; j++)
+			{
+				do
+				{
+					spawnPosition.x = Random.Range(worldMinBound.x, worldMaxBound.x);
+					spawnPosition.y = Random.Range(worldMinBound.y, worldMaxBound.y);
+				}
+				while (isTooClose(spawnPosition));
 
 
 
-                buf = Instantiate(pastilles[i], spawnPosition, Quaternion.identity) as GameObject;
-                buf.GetComponent<Pastille>().PastilleGrabEvent += PastilleGrabed;
-                positions.Add(buf.transform.position);
+				buf = Instantiate(pastilles[i], spawnPosition, Quaternion.identity) as GameObject;
+				buf.GetComponent<Pastille>().PastilleGrabEvent += PastilleGrabed;
+				positions.Add(buf.transform.position);
 
-                buf.transform.SetParent(transform);
-                pastilleLeft++;
+				buf.transform.SetParent(transform);
+				if (cpt == 1) {
+					GameObject newCercle = Instantiate(cercle, spawnPosition, Quaternion.identity) as GameObject;
+					cercle.GetComponent<SpriteRenderer>().sprite = spriteCercle1;
+					newCercle.transform.position += new Vector3(0f, 0.03f, 0f);
+					newCercle.transform.parent = buf.transform;
+                } else if(cpt == 2) {
+					GameObject newCercle = Instantiate(cercle, spawnPosition, Quaternion.identity) as GameObject;
+					cercle.GetComponent<SpriteRenderer>().sprite = spriteCercle2;
+                    newCercle.transform.position += new Vector3(0f, 0.03f, 0f);
+					newCercle.transform.parent = buf.transform;
+				}
+				cpt = (cpt + 1) % 3;
+
+				pastilleLeft++;
             }
         }
     }
