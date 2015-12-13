@@ -8,16 +8,34 @@ public class Pastille : MonoBehaviour {
     public delegate void PastilleGrab_delegate(PastilleType type);
     public event PastilleGrab_delegate PastilleGrabEvent;
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-
-    }
+	void Start()
+	{
+		
+	}
 
     public void Catched()
     {
         PastilleGrabEvent(type);
         Destroy(gameObject);
     }
+
+	public void OnBeat()
+	{
+		Debug.Log("bbbbeat");
+
+	}
+
+	void OnBecameInvisible()
+	{
+		BeatCount.BeatEvent -= this.OnBeat;
+		Debug.Log("invisible");
+	}
+
+	void OnBecameVisible()
+	{
+		BeatCount.BeatEvent += OnBeat;
+		Debug.Log("visible");
+	}
 
 }
 

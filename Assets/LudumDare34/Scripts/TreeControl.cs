@@ -7,7 +7,7 @@ public class TreeControl : MonoBehaviour {
 	public float angle = 0f;
 	public float speed = 1f;
 	public int numPlayer = 0;
-    public float rotateSpeed = 0.005f;
+    public float rotateSpeed = 5f;
 
 	private KeyCode left, right;
     public Pastille currentpowerUp = null;
@@ -54,13 +54,13 @@ public class TreeControl : MonoBehaviour {
         if (rotate<0)
         {
             if (angle + ANGLE_OFFSET < Mathf.PI / ANGLE_CONSTRAINT)
-                angle += rotateSpeed;
+                angle += rotateSpeed * Time.deltaTime;
 
         }
         else if (rotate > 0)
         {
             if (angle - ANGLE_OFFSET > -Mathf.PI / ANGLE_CONSTRAINT)
-                angle -= rotateSpeed;
+                angle -= rotateSpeed * Time.deltaTime;
         }
 
         //..

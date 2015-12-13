@@ -13,6 +13,8 @@ public class Draw : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		if (treeParent == null)
+			Debug.Log("Pas de parent pour les brushes!");
 		precPos = Vector3.up;
 		tc = GetComponent<TreeControl>();
 		StartCoroutine(drawTree());

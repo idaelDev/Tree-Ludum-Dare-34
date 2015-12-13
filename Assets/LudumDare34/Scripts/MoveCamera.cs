@@ -8,8 +8,6 @@ public class MoveCamera : MonoBehaviour
 	//min: 2
 
 	public Transform p1, p2;
-	public BoxCollider2D[] displayZones;
-
 
 	private int[] camSize = { 4, 8, 16 };
 	private int[] camPosMaxX = { 20, 10, 0 };
@@ -60,7 +58,6 @@ public class MoveCamera : MonoBehaviour
 	{
 		while (true)
 		{
-			Debug.Log(targetZoom + " " + currentZoom + " " + oldZoom);
 			if (oldZoom != currentZoom)
 			{
 				if (lerpZoomValue <= 0.99f)
