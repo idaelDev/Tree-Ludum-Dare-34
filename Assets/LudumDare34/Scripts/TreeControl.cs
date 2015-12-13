@@ -9,7 +9,7 @@ public class TreeControl : MonoBehaviour {
 	public int numPlayer = 0;
 
 	private KeyCode left, right;
-
+    public Pastille currentpowerUp = null;
 
 	// Use this for initialization
 	void Start()
@@ -46,4 +46,22 @@ public class TreeControl : MonoBehaviour {
 		
 		this.transform.position += direction*Time.deltaTime * speed;
 	}
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.tag == "PowerUp")
+        {
+            currentpowerUp = other.gameObject.GetComponent<Pastille>();
+            Debug.Log(currentpowerUp);
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "PowerUp")
+        {
+            currentpowerUp = null;
+            Debug.Log(currentpowerUp);
+        }
+    }
 }

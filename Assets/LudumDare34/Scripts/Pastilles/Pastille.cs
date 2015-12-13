@@ -14,7 +14,7 @@ public class Pastille : MonoBehaviour {
         {
             PastilleGrabEvent(type);
         }
-        Destroy(gameObject);
+       // Destroy(gameObject);
     }
 
 }
