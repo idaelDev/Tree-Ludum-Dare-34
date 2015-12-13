@@ -83,8 +83,18 @@ public class MoveCamera : MonoBehaviour
 	{
 		int newTargetZoom = 0;
 		float distance = Vector3.Distance(p1.position, p2.position);
+		Debug.Log(distance);
+		if (distance < 12)
+			Camera.main.orthographicSize = 4;
+		else if (distance > 22)
+			Camera.main.orthographicSize = 16;
+		else Camera.main.orthographicSize = 8;
+		this.transform.parent.position = new Vector3(
+			this.transform.parent.position.x,
+			Mathf.Min(p1.position.y, p2.position.y),
+			this.transform.parent.position.z);
 
-		if (distance < 12)  //Max
+		Debug.Log(CenterOfVectors(new Vector3[] { p1.position, p2.position}));
 			newTargetZoom = 0;
 		else if (distance > 22) //Min
 			newTargetZoom = 2;
