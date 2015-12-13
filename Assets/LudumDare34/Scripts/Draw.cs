@@ -3,11 +3,13 @@ using System.Collections;
 
 public class Draw : MonoBehaviour {
 
-	public GameObject paint;
+	public GameObject[] paint;
 	public Transform treeParent;
 
 	private Vector3 precPos;
 	private TreeControl tc;
+
+    public float wait = 0.1f;
 	
 	// Use this for initialization
 	void Start () {
@@ -22,7 +24,8 @@ public class Draw : MonoBehaviour {
 		while (true)
 		{
 			//ToDo Coroutine? 
-			GameObject g = Instantiate(paint) as GameObject;
+            int ind = Random.Range(0, paint.Length);
+			GameObject g = Instantiate(paint[ind]) as GameObject;
 
 			//g.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 4f);
 
@@ -37,7 +40,7 @@ public class Draw : MonoBehaviour {
 			float rot_z = Mathf.Atan2(tc.direction.y, tc.direction.x) * Mathf.Rad2Deg;
 			transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
 
-			yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(wait);
 		}
 	}
 	void FixedUpdate()

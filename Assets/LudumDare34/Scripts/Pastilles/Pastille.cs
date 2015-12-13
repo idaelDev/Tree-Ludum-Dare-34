@@ -10,11 +10,13 @@ public class Pastille : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(GameManager.Instance.gameStarted)
-        {
-            PastilleGrabEvent(type);
-        }
-       // Destroy(gameObject);
+
+    }
+
+    public void Catched()
+    {
+        PastilleGrabEvent(type);
+        Destroy(gameObject);
     }
 
 }

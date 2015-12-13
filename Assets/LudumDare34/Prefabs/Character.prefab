@@ -133,6 +133,8 @@ MonoBehaviour:
   angle: 0
   speed: .75
   numPlayer: 1
+  rotateSpeed: .00499999989
+  currentpowerUp: {fileID: 0}
 --- !u!114 &11487974
 MonoBehaviour:
   m_ObjectHideFlags: 1

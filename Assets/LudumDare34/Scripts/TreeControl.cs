@@ -7,45 +7,71 @@ public class TreeControl : MonoBehaviour {
 	public float angle = 0f;
 	public float speed = 1f;
 	public int numPlayer = 0;
+    public float rotateSpeed = 0.005f;
 
 	private KeyCode left, right;
     public Pastille currentpowerUp = null;
+
+    private const float ANGLE_OFFSET = 0.01f;
+    private const float ANGLE_CONSTRAINT = 2.2f;
+
+    private string playerHorizontal;
+    private string playerFire;
 
 	// Use this for initialization
 	void Start()
 	{
 		if(numPlayer == 0) {
-			left = KeyCode.Q;
-			right = KeyCode.D;
+            playerHorizontal = "Horizontal_p1";
+            playerFire = "Fire_p1";
         } else {
-			left = KeyCode.LeftArrow;
-			right = KeyCode.RightArrow;
+            playerHorizontal = "Horizontal_p2";
+            playerFire = "Fire_p2";
 		}
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		if (Input.GetKey(left))
-		{
-			if (angle + 0.01f < Mathf.PI/2.2f)
-				angle += 0.005f;
+        float rotate = Input.GetAxisRaw(playerHorizontal);
+        //..
+        Rotation(rotate);
 
-		}
-		else if (Input.GetKey(right))
-		{
-			if (angle - 0.01f >-Mathf.PI / 2.2f)
-				angle -= 0.005f;
-		}
-
-		direction = new Vector3(
-			Mathf.Cos(angle + Mathf.PI / 2),
-			Mathf.Sin(angle + Mathf.PI / 2),
-			0f);
-		direction.Normalize();
-		
-		this.transform.position += direction*Time.deltaTime * speed;
+        if(Input.GetButtonDown(playerFire))
+        {
+            if(currentpowerUp != null)
+            {
+                currentpowerUp.Catched();
+            }
+        }
 	}
+
+    public void Rotation(float rotate)
+    {
+        if (rotate<0)
+        {
+            if (angle + ANGLE_OFFSET < Mathf.PI / ANGLE_CONSTRAINT)
+                angle += rotateSpeed;
+
+        }
+        else if (rotate > 0)
+        {
+            if (angle - ANGLE_OFFSET > -Mathf.PI / ANGLE_CONSTRAINT)
+                angle -= rotateSpeed;
+        }
+
+        //..
+
+        direction = new Vector3(
+        Mathf.Cos(angle + Mathf.PI / 2),
+        Mathf.Sin(angle + Mathf.PI / 2),
+        0f);
+        direction.Normalize();
+
+        //..
+
+        this.transform.position += direction * Time.deltaTime * speed;
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
