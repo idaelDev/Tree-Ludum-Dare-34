@@ -10,75 +10,86 @@ public class MoveCamera : MonoBehaviour
 	public Transform p1, p2;
 	public BoxCollider2D[] displayZones;
 
-	private int zoomLevel = 0;
+
 	private int[] camSize = { 4, 8, 16 };
 	private int[] camPosMaxX = { 20, 10, 0 };
 
-	private Coroutine lerpCoroutine;
-	private bool coroutineRunning = false;
-
-
 	private int oldZoom = 0;
 	private int targetZoom = 0;
+	private int currentZoom = 0;
+
+	bool mustChangeZoom;
+
 	private Vector3 oldPos;
 	private Vector3 targetPos;
 	private float lerpPosValue = 0f;
 	private float lerpZoomValue = 0f;
-	
+
 
 	// Use this for initialization
 	void Start()
 	{
-		lerpCoroutine = StartCoroutine(changeZoom());
+		lerpPosValue = 0f;
+		lerpZoomValue = 0f;
+		StartCoroutine(changeCamera());
 	}
 
 	// Update is called once per frame
 
 	void Update()
 	{
-		int newZoom = GetTargetZoomLevel();
-		if (newZoom != targetZoom)
+		if (GameManager.Instance.nbPlayers == 2)
 		{
-			lerpPosValue = 0f;
-			lerpZoomValue = 0f;
-			oldZoom = targetZoom;
-			targetZoom = newZoom;
-
-			
+			int newZoom = GetTargetZoomLevel();
+			if (newZoom != targetZoom)
+			{
+				targetZoom = newZoom;
+			}
 		}
 
 		targetPos = new Vector3(
-			PositionXInGamezone(targetZoom),
-			PositionYInGamezone(targetZoom),//Mathf.Min(p1.position.y, p2.position.y),
+			PositionXInGamezone(currentZoom),
+			PositionYInGamezone(currentZoom),//Mathf.Min(p1.position.y, p2.position.y),
 			transform.parent.position.z);
-
-		if (!coroutineRunning)
-		{
-			lerpCoroutine = StartCoroutine(changeZoom());
-		}
 	}
 
 
 
 
-	IEnumerator changeZoom()
+	IEnumerator changeCamera()
 	{
-		coroutineRunning = true;
 		while (true)
 		{
-			if (lerpZoomValue < 0.99f)
-				lerpZoomValue += 0.01f;
-			else lerpZoomValue = 1f;
+			Debug.Log(targetZoom + " " + currentZoom + " " + oldZoom);
+			if (oldZoom != currentZoom)
+			{
+				if (lerpZoomValue <= 0.99f)
+				{
+					lerpZoomValue += 0.01f;
+					Camera.main.orthographicSize = Mathf.Lerp(camSize[oldZoom], camSize[currentZoom], lerpZoomValue);
+				}
+				else if (lerpZoomValue != 1f)
+				{
+					Camera.main.orthographicSize = Mathf.Lerp(camSize[oldZoom], camSize[currentZoom], lerpZoomValue);
+					oldZoom = currentZoom;
+					lerpZoomValue = 1f;
+				}
+			}
+			else if (currentZoom != targetZoom)
+			{
+				currentZoom = targetZoom;
+				lerpZoomValue = 0f;
+				lerpPosValue = 0f;
+            }
 
-			if (lerpPosValue < 0.995f)
+			if (lerpPosValue < 1f)
+			{
 				lerpPosValue += 0.005f;
-			else lerpPosValue = 1f;
+
+			}
 			transform.parent.position = Vector3.Lerp(transform.parent.position, targetPos, lerpPosValue);
-			Camera.main.orthographicSize = Mathf.Lerp(camSize[oldZoom], camSize[targetZoom], lerpZoomValue);
 			yield return new WaitForSeconds(0.01f);
 		}
-
-		//coroutineRunning = false;
 	}
 
 
@@ -87,13 +98,28 @@ public class MoveCamera : MonoBehaviour
 	{
 		int newTargetZoom = 0;
 		float distance = Vector3.Distance(p1.position, p2.position);
+		float distanceY = Mathf.Max(
+			Mathf.Abs(p1.position.y - transform.position.y),
+			Mathf.Abs(p2.position.y - transform.position.y));
 
-		if (distance < 12)  //Max
+		float distanceX = Mathf.Max(
+			Mathf.Abs(p1.position.y - transform.position.y),
+			Mathf.Abs(p2.position.y - transform.position.y));
+
+		if (distance < 10)  //Max
 			newTargetZoom = 0;
 		else if (distance > 22) //Min
 			newTargetZoom = 2;
 		else newTargetZoom = 1;  //Medium
 
+		if (distanceY > 3.5 && newTargetZoom == 0)
+		{
+			newTargetZoom = 1;
+		}
+		else if (distanceY > 7 && newTargetZoom == 1)
+		{
+			newTargetZoom++;
+		}
 
 
 		return newTargetZoom;
@@ -116,7 +142,12 @@ public class MoveCamera : MonoBehaviour
 
 	public float PositionXInGamezone(int zoom)
 	{
-		float posX = CenterOfVectors(new Vector3[] { p1.position, p2.position }).x;
+		float posX;
+		if (GameManager.Instance.nbPlayers == 2)
+			posX = CenterOfVectors(new Vector3[] { p1.position, p2.position }).x;
+		else
+			posX = p1.position.x;
+
 		if (posX > 0)
 		{
 			return Mathf.Min(posX, camPosMaxX[zoom]);
@@ -129,10 +160,15 @@ public class MoveCamera : MonoBehaviour
 
 	public float PositionYInGamezone(int zoom)
 	{
-		float posY = CenterOfVectors(new Vector3[] { p1.position, p2.position }).y;
+		float posY;
+		if (GameManager.Instance.nbPlayers == 2)
+			posY = CenterOfVectors(new Vector3[] { p1.position, p2.position }).y;
+		else
+			posY = p1.position.y;
+
 		if (zoom == 2)
 			posY -= 2;
 		return posY;
 
-	}	
+	}
 }
