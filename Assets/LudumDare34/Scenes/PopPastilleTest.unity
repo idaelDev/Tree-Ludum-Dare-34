@@ -112,7 +112,7 @@ Transform:
   m_Children:
   - {fileID: 1234709130}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!4 &567353801 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400002, guid: 03eb339b361d2474dab016fcf9b6a0b9, type: 2}
@@ -189,7 +189,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   Priority: 128
@@ -343,7 +343,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
 --- !u!1 &1234709125
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,4 +633,4 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2

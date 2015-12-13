@@ -8,8 +8,6 @@ public class MoveCamera : MonoBehaviour
 	//min: 2
 
 	public Transform p1, p2;
-	public BoxCollider2D[] displayZones;
-
 
 	private int[] camSize = { 4, 8, 16 };
 	private int[] camPosMaxX = { 20, 10, 0 };

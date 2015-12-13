@@ -58,7 +58,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: -2.56999993, z: 0}
+  m_LocalPosition: {x: 2, y: -3.44000006, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 488332}
@@ -132,8 +132,8 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   angle: 0
   speed: .75
-  numPlayer: 1
-  rotateSpeed: .00499999989
+  numPlayer: 0
+  rotateSpeed: .5
   currentpowerUp: {fileID: 0}
 --- !u!114 &11487974
 MonoBehaviour:
@@ -146,8 +146,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2137aba16e17004cae7077223122488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paint: {fileID: 122926, guid: aeb904bd5da5f31408843ba354163ef7, type: 2}
+  paint:
+  - {fileID: 122926, guid: aeb904bd5da5f31408843ba354163ef7, type: 2}
+  - {fileID: 129320, guid: 2071e939c5ce50448bd5bb6a419059a4, type: 2}
   treeParent: {fileID: 0}
+  wait: .25
 --- !u!212 &21222230
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -173,7 +176,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0718cdcd007ee554a96c0dd570fc9b71, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!212 &21226692
 SpriteRenderer:
   m_ObjectHideFlags: 1
