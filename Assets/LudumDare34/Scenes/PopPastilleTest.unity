@@ -314,6 +314,22 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 11459358, guid: 211448ab161087741b5c10b053e40c6f, type: 2}
+      propertyPath: minDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11459358, guid: 211448ab161087741b5c10b053e40c6f, type: 2}
+      propertyPath: worldMinBound.x
+      value: -25
+      objectReference: {fileID: 0}
+    - target: {fileID: 11459358, guid: 211448ab161087741b5c10b053e40c6f, type: 2}
+      propertyPath: worldMinBound.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11459358, guid: 211448ab161087741b5c10b053e40c6f, type: 2}
+      propertyPath: worldMaxBound.x
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 211448ab161087741b5c10b053e40c6f, type: 2}
   m_IsPrefabParent: 0
