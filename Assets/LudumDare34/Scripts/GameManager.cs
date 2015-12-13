@@ -8,6 +8,6 @@ public class GameManager : Singleton<GameManager> {
 
     void Start()
     {
-        gameStarted = true;
+        
     }
 }

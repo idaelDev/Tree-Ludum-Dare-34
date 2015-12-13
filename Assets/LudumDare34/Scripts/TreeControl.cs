@@ -33,15 +33,18 @@ public class TreeControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
-        float rotate = Input.GetAxisRaw(playerHorizontal);
-        //..
-        Rotation(rotate);
-
-        if(Input.GetButtonDown(playerFire))
+        if (GameManager.Instance.gameStarted)
         {
-            if(currentpowerUp != null)
+            float rotate = Input.GetAxisRaw(playerHorizontal);
+            //..
+            Rotation(rotate);
+
+            if (Input.GetButtonDown(playerFire))
             {
-                currentpowerUp.Catched();
+                if (currentpowerUp != null)
+                {
+                    currentpowerUp.Catched();
+                }
             }
         }
 	}
