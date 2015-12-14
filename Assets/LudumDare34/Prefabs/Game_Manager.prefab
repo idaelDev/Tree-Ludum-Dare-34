@@ -55,6 +55,13 @@ MonoBehaviour:
   - {fileID: 169452, guid: b1c8804843dd7fb4f84d1a96f6f87e9b, type: 2}
   - {fileID: 169452, guid: 554862c7f2a320a47bd66fbcfbad7110, type: 2}
   - {fileID: 169452, guid: f2ae86879139673489a299e11cd8cfc8, type: 2}
+  simpleBranches:
+  - {fileID: 174582, guid: 5cb3c68d29067c64db09a8749d4ab11e, type: 2}
+  - {fileID: 117230, guid: 739ac40993bb3514b9d82fd40c422cf9, type: 2}
+  - {fileID: 145788, guid: aea8efbb2b829e746adb4da44bfe1aa5, type: 2}
+  - {fileID: 141422, guid: bc9087f513d6cd64c8d3ea1783b15ffb, type: 2}
+  - {fileID: 103856, guid: 109c79a119b356f48a819a61d501dba8, type: 2}
+  - {fileID: 184376, guid: dcc87b2eac9e65540900f81dc1371eaa, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

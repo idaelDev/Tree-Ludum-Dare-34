@@ -68,8 +68,11 @@ public class TreeControl : MonoBehaviour
 					bool onBeat = BeatCount.Instance.isOnBeat();
                     speed = speedStates[(int)currentpowerUp.bType];
 
-					currentpowerUp.Catched();
 					GetComponent<Draw>().drawBranches(currentNode, currentpowerUp.pType, onBeat);
+
+
+
+					currentpowerUp.Catched();
 					currentNode = Instantiate(nodeObject) as GameObject;
 					currentNode.transform.parent = treeParent;
 					GetComponent<Draw>().node = currentNode.transform;

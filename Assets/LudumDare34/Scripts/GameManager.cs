@@ -13,6 +13,7 @@ public class GameManager : Singleton<GameManager> {
 	public GameObject[] animals;
 	public GameObject[] fruits;
 	public GameObject[] branches;
+	public GameObject[] simpleBranches;
 
 	public void StartGame()
     {
@@ -52,6 +53,8 @@ public class GameManager : Singleton<GameManager> {
 				return fruits;
 			case PastilleType.ANIMAL:
 				return animals;
+			case PastilleType.SIMPLE:
+				return simpleBranches;
 			default:
 				return null;
         }

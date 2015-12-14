@@ -61,7 +61,8 @@ public enum PastilleType
     FLOWER,
     ANIMAL,
     FRUIT,
-    BRANCH
+    BRANCH, 
+	SIMPLE
 }
 
 public enum BonusType
