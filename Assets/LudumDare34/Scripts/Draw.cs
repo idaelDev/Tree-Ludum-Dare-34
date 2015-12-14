@@ -58,24 +58,25 @@ public class Draw : MonoBehaviour
 
 	IEnumerator drawBranchesOnNode(GameObject node, PastilleType numType)
 	{
-		int nbSkippedMax = 40;
-		int nbSkippedMin = 15;
+		int nbSkippedMax = 200;
+		int nbSkippedMin = 100;
 		int nb = 0;// UnityEngine.Random.Range(nbSkippedMin, nbSkippedMax);
-
-		for (int i = node.transform.childCount-1; i > 15 ; i-=nb)
+		int chooseSide = 0;
+        for (int i = node.transform.childCount-1; i > 15 ; i-=nb)
 		{
 			GameObject branch = Instantiate( Resources.Load("branch" + (int)numType)) as GameObject;
 			branch.transform.parent = node.transform.GetChild(i);
 			branch.transform.localPosition = Vector3.zero;
 			branch.transform.localRotation = Quaternion.identity;
 
-			UnityEngine.Random.seed = (int)Time.timeSinceLevelLoad;
+			UnityEngine.Random.seed *= 54136841;
 
-			int chooseSide = UnityEngine.Random.Range(0, 4);
+			chooseSide = (chooseSide + UnityEngine.Random.Range(0, 4))%4;
 
-			float size = UnityEngine.Random.Range(0.8f, 1.2f);
+			float size = UnityEngine.Random.Range(2.5f, 6f);
 
 			Vector3 newScale;
+			chooseSide = 0;
             switch (chooseSide)
 			{
 				case 0:
@@ -93,7 +94,7 @@ public class Draw : MonoBehaviour
 			}
 			branch.transform.localScale = newScale;
 
-			yield return new WaitForSeconds(0.25f); ;
+			yield return new WaitForSeconds(0.25f);
 			nb = UnityEngine.Random.Range(nbSkippedMin, nbSkippedMax);
 		}
 

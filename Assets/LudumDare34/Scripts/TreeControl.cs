@@ -58,7 +58,7 @@ public class TreeControl : MonoBehaviour {
 					//currentpowerUp.type;
 
 					currentpowerUp.Catched();
-					GetComponent<Draw>().drawBranches(currentNode, currentpowerUp.type);
+					GetComponent<Draw>().drawBranches(currentNode, currentpowerUp.pType);
 					currentNode = Instantiate(nodeObject) as GameObject;
 					currentNode.transform.parent = treeParent;
 					GetComponent<Draw>().node = currentNode.transform;

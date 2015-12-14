@@ -3,30 +3,33 @@ using System.Collections;
 
 public class Pastille : MonoBehaviour {
 
-    public PastilleType type;
+    public PastilleType pType;
+	public BonusType bType;
 
-    public delegate void PastilleGrab_delegate(PastilleType type);
+
+	public delegate void PastilleGrab_delegate(PastilleType type);
     public event PastilleGrab_delegate PastilleGrabEvent;
 
 	void Start()
 	{
-		
+		BeatCount.BeatEvent += OnBeat;
 	}
 
     public void Catched()
     {
-        PastilleGrabEvent(type);
-        Destroy(gameObject);
+        PastilleGrabEvent(pType);
+		BeatCount.BeatEvent -= OnBeat;
+		Destroy(gameObject);
     }
 
 	public void OnBeat()
 	{
-		if (this.GetComponentInChildren<Animator>())
+		if (GetComponentInChildren<Animator>())
 			GetComponentInChildren<Animator>().Play("Rotate");
 
 	}
 
-	void OnBecameInvisible()
+	/*void OnBecameInvisible()
 	{
 		BeatCount.BeatEvent -= OnBeat;
 	}
@@ -34,7 +37,7 @@ public class Pastille : MonoBehaviour {
 	void OnBecameVisible()
 	{
 		BeatCount.BeatEvent += OnBeat;
-	}
+	}*/
 
 }
 
@@ -44,4 +47,11 @@ public enum PastilleType
     ANIMAL,
     FRUIT,
     BRANCH
+}
+
+public enum BonusType
+{
+	FAST,
+	NORMAL,
+	SLOW
 }

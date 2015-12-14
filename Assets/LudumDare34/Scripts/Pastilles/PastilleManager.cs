@@ -8,8 +8,8 @@ public class PastilleManager : Singleton<PastilleManager> {
     public Vector2 worldMaxBound;
 
 	public GameObject cercle;
-	public Sprite spriteCercle1;
-	public Sprite spriteCercle2;
+	public Sprite spriteCercleBleu;
+	public Sprite spriteCercleVert;
 
 
     public int nbPastilles = 100;
@@ -31,11 +31,11 @@ public class PastilleManager : Singleton<PastilleManager> {
 	void Start () {
         pastillesCounter = new int[pastilles.Length];
         positions = new List<Vector3>();
-        SpawnPatilles();
+        StartCoroutine( SpawnPatilles());
         SetNewZone();
 	}
 
-    void SpawnPatilles()
+    IEnumerator SpawnPatilles()
     {
 		int cpt = 0;
         GameObject buf;
@@ -45,14 +45,21 @@ public class PastilleManager : Singleton<PastilleManager> {
         {
 			for (int j = 0; j < nbEach; j++)
 			{
+				int countTime = 0;
+				yield return new WaitForFixedUpdate();
 				do
 				{
 					spawnPosition.x = Random.Range(worldMinBound.x, worldMaxBound.x);
 					spawnPosition.y = Random.Range(worldMinBound.y, worldMaxBound.y);
+					Debug.Log("while");
+					countTime++;
+					/*if(countTime < 1000)
+					{
+						
+						break;
+					}*/
 				}
 				while (isTooClose(spawnPosition));
-
-
 
 				buf = Instantiate(pastilles[i], spawnPosition, Quaternion.identity) as GameObject;
 				buf.GetComponent<Pastille>().PastilleGrabEvent += PastilleGrabed;
@@ -61,16 +68,20 @@ public class PastilleManager : Singleton<PastilleManager> {
 				buf.transform.SetParent(transform);
 				if (cpt == 1) {
 					GameObject newCercle = Instantiate(cercle, spawnPosition, Quaternion.identity) as GameObject;
-					cercle.GetComponent<SpriteRenderer>().sprite = spriteCercle1;
+					cercle.GetComponent<SpriteRenderer>().sprite = spriteCercleBleu;
 					newCercle.transform.position += new Vector3(0f, 0.03f, 0f);
 					newCercle.transform.parent = buf.transform;
+					buf.GetComponent<Pastille>().bType = BonusType.SLOW;
                 } else if(cpt == 2) {
 					GameObject newCercle = Instantiate(cercle, spawnPosition, Quaternion.identity) as GameObject;
-					cercle.GetComponent<SpriteRenderer>().sprite = spriteCercle2;
+					cercle.GetComponent<SpriteRenderer>().sprite = spriteCercleVert;
                     newCercle.transform.position += new Vector3(0f, 0.03f, 0f);
 					newCercle.transform.parent = buf.transform;
+					buf.GetComponent<Pastille>().bType = BonusType.FAST;
+				} else {
+					buf.GetComponent<Pastille>().bType = BonusType.NORMAL;
 				}
-				cpt = (cpt + 1) % 3;
+				cpt = (cpt + 1) % 4;
 
 				pastilleLeft++;
             }
@@ -85,7 +96,6 @@ public class PastilleManager : Singleton<PastilleManager> {
             {
                 return true;
             }
-
         }
         return false;
     }
@@ -94,7 +104,7 @@ public class PastilleManager : Singleton<PastilleManager> {
     {
         for (int i = 0; i < pastilles.Length; i++)
         {
-            if(type == pastilles[i].GetComponent<Pastille>().type)
+            if(type == pastilles[i].GetComponent<Pastille>().pType)
             {
                 pastillesCounter[i]++;
             }

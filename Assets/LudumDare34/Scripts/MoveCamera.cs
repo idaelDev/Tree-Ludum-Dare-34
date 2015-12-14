@@ -9,8 +9,8 @@ public class MoveCamera : MonoBehaviour
 
 	public Transform p1, p2;
 
-	private int[] camSize = { 4, 8, 16 };
-	private int[] camPosMaxX = { 20, 10, 0 };
+	private int[] camSize = { 4, 10, 20 };
+	private int[] camPosMaxX = { 25, 13, 0 };
 
 	private int oldZoom = 0;
 	private int targetZoom = 0;
@@ -58,7 +58,7 @@ public class MoveCamera : MonoBehaviour
 
     void SetAudioZoom()
     {
-        if(Vector3.Distance(p1.position, p2.position) > 22)
+        if(targetZoom == 2)
         {
             SoundManager.Instance.SetSound(SoundManager.Instance.Far);
         }
@@ -119,7 +119,7 @@ public class MoveCamera : MonoBehaviour
 
 		if (distance < 10)  //Max
 			newTargetZoom = 0;
-		else if (distance > 22) //Min
+		else if (distance > 27) //Min
 			newTargetZoom = 2;
 		else newTargetZoom = 1;  //Medium
 
