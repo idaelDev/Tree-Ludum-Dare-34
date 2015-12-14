@@ -28,7 +28,7 @@ public class Pastille : MonoBehaviour {
 
 	void OnBecameInvisible()
 	{
-		BeatCount.BeatEvent -= this.OnBeat;
+		BeatCount.BeatEvent -= OnBeat;
 	}
 
 	void OnBecameVisible()

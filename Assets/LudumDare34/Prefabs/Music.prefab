@@ -358,8 +358,8 @@ MonoBehaviour:
   bpm: 55
   beat: 0
   beatTot: 0
-  Mo: {fileID: 0}
-  canCountBeat: 0
+  Mo: {fileID: 8283168}
+  canCountBeat: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

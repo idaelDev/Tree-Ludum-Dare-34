@@ -58,7 +58,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: -3.44000006, z: 0}
+  m_LocalPosition: {x: -2, y: -3.44000006, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 488332}
@@ -135,6 +135,8 @@ MonoBehaviour:
   numPlayer: 0
   rotateSpeed: .5
   currentpowerUp: {fileID: 0}
+  nodeObject: {fileID: 136858, guid: da1666eeb6d5ad34bb3dc9daa5c0de64, type: 2}
+  treeParent: {fileID: 0}
 --- !u!114 &11487974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -149,7 +151,6 @@ MonoBehaviour:
   paint:
   - {fileID: 122926, guid: aeb904bd5da5f31408843ba354163ef7, type: 2}
   - {fileID: 129320, guid: 2071e939c5ce50448bd5bb6a419059a4, type: 2}
-  treeParent: {fileID: 0}
   wait: .25
 --- !u!212 &21222230
 SpriteRenderer:

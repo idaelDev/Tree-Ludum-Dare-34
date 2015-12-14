@@ -44,7 +44,8 @@ public class SoundManager :  Singleton<SoundManager>{
             yield return 0;
         }
         old.volume = 0.0f;
-        next.volume = 1.0f;
+        next.volume = musicMaxVolume;
+
 
     }
     

@@ -41,7 +41,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worldMinBound: {x: -10, y: 0}
   worldMaxBound: {x: 10, y: 100}
+  cercle: {fileID: 139376, guid: fc6ba3a4ca7cee945a32509f177a23c6, type: 2}
+  spriteCercle1: {fileID: 21300000, guid: 54647352b33827943ac7e8ce9f487b77, type: 3}
+  spriteCercle2: {fileID: 21300000, guid: 6dba85544ffabcc4e9d7b23f9d07b0d6, type: 3}
   nbPastilles: 100
+  minZoneValue: 3
+  maxZoneValue: 8
+  minDistance: 1
   pastilles:
   - {fileID: 173888, guid: 9a93da5f6b85a87419d4d35dc0b5497a, type: 2}
   - {fileID: 141914, guid: ca49c1ce947acf841883a9b1a2bb52e5, type: 2}

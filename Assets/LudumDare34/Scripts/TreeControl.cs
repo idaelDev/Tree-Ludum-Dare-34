@@ -10,7 +10,12 @@ public class TreeControl : MonoBehaviour {
     public float rotateSpeed = 5f;
 
 	private KeyCode left, right;
+
     public Pastille currentpowerUp = null;
+	public GameObject nodeObject;
+	private GameObject currentNode;
+	private ArrayList nodeList;
+	public Transform treeParent;
 
     private const float ANGLE_OFFSET = 0.01f;
     private const float ANGLE_CONSTRAINT = 2.2f;
@@ -21,7 +26,14 @@ public class TreeControl : MonoBehaviour {
 	// Use this for initialization
 	void Start()
 	{
-		if(numPlayer == 0) {
+		currentNode = Instantiate(nodeObject) as GameObject;
+		currentNode.transform.parent = treeParent;
+		GetComponent<Draw>().node = currentNode.transform;
+
+		nodeList = new ArrayList();
+		nodeList.Add(currentNode);
+
+        if (numPlayer == 0) {
             playerHorizontal = "Horizontal_p1";
             playerFire = "Fire_p1";
         } else {
@@ -43,10 +55,18 @@ public class TreeControl : MonoBehaviour {
             {
                 if (currentpowerUp != null)
                 {
-                    currentpowerUp.Catched();
-                }
+					//currentpowerUp.type;
+
+					currentpowerUp.Catched();
+					GetComponent<Draw>().drawBranches(currentNode, currentpowerUp.type);
+					currentNode = Instantiate(nodeObject) as GameObject;
+					currentNode.transform.parent = treeParent;
+					GetComponent<Draw>().node = currentNode.transform;
+					nodeList = new ArrayList();
+					nodeList.Add(currentNode);
+				}
             }
-        }
+		}
 	}
 
     public void Rotation(float rotate)
