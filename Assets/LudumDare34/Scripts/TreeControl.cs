@@ -5,9 +5,9 @@ public class TreeControl : MonoBehaviour {
 
 	public Vector3 direction;
 	public float angle = 0f;
-	public float speed = 1f;
+	private float speed = 1f;
 	public int numPlayer = 0;
-    public float rotateSpeed = 5f;
+    public float rotateSpeed = 8f;
 
 	private KeyCode left, right;
 
@@ -23,9 +23,12 @@ public class TreeControl : MonoBehaviour {
     private string playerHorizontal;
     private string playerFire;
 
+	public float[] speedStates =  {0.8f, 1.1f, 1.5f};
+
 	// Use this for initialization
 	void Start()
 	{
+		speed = speedStates[1];
 		currentNode = Instantiate(nodeObject) as GameObject;
 		currentNode.transform.parent = treeParent;
 		GetComponent<Draw>().node = currentNode.transform;
@@ -55,7 +58,7 @@ public class TreeControl : MonoBehaviour {
             {
                 if (currentpowerUp != null)
                 {
-					//currentpowerUp.type;
+					this.speed = speedStates[(int)currentpowerUp.bType];
 
 					currentpowerUp.Catched();
 					GetComponent<Draw>().drawBranches(currentNode, currentpowerUp.pType);
@@ -101,7 +104,6 @@ public class TreeControl : MonoBehaviour {
         if(other.gameObject.tag == "PowerUp")
         {
             currentpowerUp = other.gameObject.GetComponent<Pastille>();
-            Debug.Log(currentpowerUp);
         }
     }
 
@@ -110,7 +112,6 @@ public class TreeControl : MonoBehaviour {
         if (other.gameObject.tag == "PowerUp")
         {
             currentpowerUp = null;
-            Debug.Log(currentpowerUp);
         }
     }
 }

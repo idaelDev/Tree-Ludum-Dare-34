@@ -62,12 +62,12 @@ public class Draw : MonoBehaviour
 		int nbSkippedMin = 100;
 		int nb = 0;// UnityEngine.Random.Range(nbSkippedMin, nbSkippedMax);
 		int chooseSide = 0;
-        for (int i = node.transform.childCount-1; i > 15 ; i-=nb)
+		for (int i = node.transform.childCount - 1; i > node.transform.childCount - 2; i -= nb)
 		{
-			GameObject branch = Instantiate( Resources.Load("branch" + (int)numType)) as GameObject;
+			GameObject branch = Instantiate(Resources.Load("branch" + (int)numType)) as GameObject;
 			branch.transform.parent = node.transform.GetChild(i);
 			branch.transform.localPosition = Vector3.zero;
-			branch.transform.localRotation = Quaternion.identity;
+			//branch.transform.localRotation = Quaternion.identity;
 
 			UnityEngine.Random.seed *= 54136841;
 
