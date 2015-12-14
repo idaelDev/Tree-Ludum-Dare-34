@@ -2,9 +2,9 @@
 using System.Collections;
 using System;
 
-public class BeatCount : MonoBehaviour {
+public class BeatCount : Singleton<BeatCount>{
 
-    public float t = 0.0f;
+	public float t = 0.0f;
     public float deltaTime;
     public float bpm = 0f;
     public float beat = 0.0f;
@@ -22,7 +22,6 @@ public class BeatCount : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         timeOffset = 60.0f / bpm;
-        Debug.Log(timeOffset);
         expectedTime = timeOffset;
 		if (waitCountBeat)
 			StartCoroutine(waitFirstBeat());
@@ -48,7 +47,7 @@ public class BeatCount : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (canCountBeat && !waitCountBeat)
+        if (canCountBeat && !waitCountBeat)
         {
             t = Mo.time;
 
@@ -67,8 +66,12 @@ public class BeatCount : MonoBehaviour {
 	}
 
 	public bool isOnBeat() {
-		if( Mathf.Abs( Mo.time - expectedTime) < 0.1f)
+		if (Mathf.Abs(Mo.time - expectedTime) < 0.15f
+				|| Mathf.Abs(Mo.time - expectedTime + timeOffset) < 0.15f)
+		{
 			return true;
+		} else
+
 		return false;
 	}
 

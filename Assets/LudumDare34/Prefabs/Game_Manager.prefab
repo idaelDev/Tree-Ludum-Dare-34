@@ -40,6 +40,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameStarted: 0
+  nbPlayers: 2
+  flowers:
+  - {fileID: 181164, guid: e3e07eeddf698a1448d7525f6d68d2b0, type: 2}
+  - {fileID: 181164, guid: 347a4c603a1d60e4a872431f95afbabc, type: 2}
+  animals:
+  - {fileID: 181164, guid: 351f2827d8a76ed4bb91a8e5646dbf73, type: 2}
+  - {fileID: 181164, guid: 4705a2116120f8c499641e95a3dcadc2, type: 2}
+  fruits:
+  - {fileID: 181164, guid: cd39ef118fb8dcd4da74f666a1565681, type: 2}
+  - {fileID: 181164, guid: 955fb88decde18043ac50cdb20e9ba0e, type: 2}
+  - {fileID: 181164, guid: e57fae849580e114eb085ebcc84afcb6, type: 2}
+  branches:
+  - {fileID: 169452, guid: b1c8804843dd7fb4f84d1a96f6f87e9b, type: 2}
+  - {fileID: 169452, guid: 554862c7f2a320a47bd66fbcfbad7110, type: 2}
+  - {fileID: 169452, guid: f2ae86879139673489a299e11cd8cfc8, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

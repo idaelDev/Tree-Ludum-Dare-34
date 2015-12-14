@@ -9,7 +9,12 @@ public class GameManager : Singleton<GameManager> {
 
 	bool canRestartGame = false;
 
-    public void StartGame()
+	public GameObject[] flowers;
+	public GameObject[] animals;
+	public GameObject[] fruits;
+	public GameObject[] branches;
+
+	public void StartGame()
     {
 		if (!gameStarted)
 		{
@@ -21,7 +26,7 @@ public class GameManager : Singleton<GameManager> {
 
 	void Update(){
 		if(canRestartGame) {
-			if(Input.anyKey)
+			if(Input.anyKey || Input.GetButtonDown("Fire_p2") || Input.GetButtonDown("Fire_p2"))
 				Application.LoadLevel(0);
 		}
 	}
@@ -36,4 +41,20 @@ public class GameManager : Singleton<GameManager> {
 		yield return new WaitForSeconds(4f);
 		canRestartGame = true;
     }
+
+	public GameObject[] getAssetsBranches(PastilleType type) {
+		switch(type) {
+			case PastilleType.FLOWER:	
+				return flowers;
+			case PastilleType.BRANCH:
+				return branches;
+			case PastilleType.FRUIT:
+				return fruits;
+			case PastilleType.ANIMAL:
+				return animals;
+			default:
+				return null;
+        }
+
+	}
 }

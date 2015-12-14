@@ -51,20 +51,22 @@ public class Draw : MonoBehaviour
 		}
 	}
 
-	public void drawBranches(GameObject currentNode, PastilleType numType)
+	public void drawBranches(GameObject currentNode, PastilleType numType, bool onBeat)
 	{
-		StartCoroutine(drawBranchesOnNode(currentNode, numType));
+		StartCoroutine(drawBranchesOnNode(currentNode, numType, onBeat));
 	}
 
-	IEnumerator drawBranchesOnNode(GameObject node, PastilleType numType)
+	IEnumerator drawBranchesOnNode(GameObject node, PastilleType numType, bool onBeat)
 	{
 		int nbSkippedMax = 200;
 		int nbSkippedMin = 100;
 		int nb = 0;// UnityEngine.Random.Range(nbSkippedMin, nbSkippedMax);
 		int chooseSide = 0;
-		for (int i = node.transform.childCount - 1; i > node.transform.childCount - 2; i -= nb)
+
+		GameObject[] branches = GameManager.Instance.getAssetsBranches(numType);
+        for (int i = node.transform.childCount - 1; i > node.transform.childCount - 2; i -= nb)
 		{
-			GameObject branch = Instantiate(Resources.Load("branch" + (int)numType)) as GameObject;
+			GameObject branch = Instantiate(branches[UnityEngine.Random.Range(0, branches.Length)]) as GameObject;
 			branch.transform.parent = node.transform.GetChild(i);
 			branch.transform.localPosition = Vector3.zero;
 			//branch.transform.localRotation = Quaternion.identity;
@@ -73,10 +75,16 @@ public class Draw : MonoBehaviour
 
 			chooseSide = (chooseSide + UnityEngine.Random.Range(0, 4))%4;
 
-			float size = UnityEngine.Random.Range(2.5f, 6f);
+			float size;
+			if(onBeat)
+				size = UnityEngine.Random.Range(6f, 8.5f);
+			else
+				size = UnityEngine.Random.Range(3.5f, 6f);
 
-			Vector3 newScale;
-			chooseSide = 0;
+			Vector3 newScale = new Vector3(size, size, 1);
+
+			
+			/*chooseSide = 0;
             switch (chooseSide)
 			{
 				case 0:
@@ -91,7 +99,7 @@ public class Draw : MonoBehaviour
 				default:
 					newScale = new Vector3(-size, -size, 1);
 					break;
-			}
+			}*/
 			branch.transform.localScale = newScale;
 
 			yield return new WaitForSeconds(0.25f);

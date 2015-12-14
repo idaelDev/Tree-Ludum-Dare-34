@@ -51,7 +51,6 @@ public class PastilleManager : Singleton<PastilleManager> {
 				{
 					spawnPosition.x = Random.Range(worldMinBound.x, worldMaxBound.x);
 					spawnPosition.y = Random.Range(worldMinBound.y, worldMaxBound.y);
-					Debug.Log("while");
 					countTime++;
 					/*if(countTime < 1000)
 					{

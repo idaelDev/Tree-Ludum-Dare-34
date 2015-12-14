@@ -61,13 +61,21 @@ public class MoveCamera : MonoBehaviour
     {
         if(targetZoom == 2)
         {
-            SoundManager.Instance.SetSound(SoundManager.Instance.Far);
+            SoundManager.Instance.SetMusic(SoundManager.Instance.Far);
         }
         else
         {
-            SoundManager.Instance.SetSound(SoundManager.Instance.Close);
+            SoundManager.Instance.SetMusic(SoundManager.Instance.Close);
         }
-    }
+
+		if (targetZoom == 0)
+		{
+			SoundManager.Instance.PlayNoise();
+		} else
+		{
+			SoundManager.Instance.MuteNoise();
+		}
+	}
 
 	private int GetTargetZoomLevel()
 	{
@@ -188,10 +196,10 @@ public class MoveCamera : MonoBehaviour
 	}
 
 	IEnumerator cameraFin() {
-		float zoomFin = 210;
+		float zoomFin = 150;
 		float prevZoom = Camera.main.orthographicSize;
 
-		Vector3 endPos = new Vector3(0, 202, 0);
+		Vector3 endPos = new Vector3(0, 130, 0);
 		Vector3 prevPos = Camera.main.transform.position;
 
 		Transform parentCamera = Camera.main.transform.parent;

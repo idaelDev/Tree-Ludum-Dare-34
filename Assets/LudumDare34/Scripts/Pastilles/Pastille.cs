@@ -20,6 +20,7 @@ public class Pastille : MonoBehaviour {
 
     public void Catched()
     {
+        SoundManager.Instance.GetComponents<AudioSource>()[(int)pType].Play();
         PastilleGrabEvent(pType);
 		BeatCount.BeatEvent -= OnBeat;
 		Destroy(gameObject);
@@ -33,6 +34,8 @@ public class Pastille : MonoBehaviour {
 	}
 
 	void EndGame() {
+		BeatCount.BeatEvent -= OnBeat;
+		End.EndEvent -= EndGame;
 		Debug.Log("endPastille");
 		try {
 			Destroy(this.gameObject);
