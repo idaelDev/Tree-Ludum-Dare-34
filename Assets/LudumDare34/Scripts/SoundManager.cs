@@ -12,13 +12,16 @@ public class SoundManager :  Singleton<SoundManager>{
     public float fadeTime = 0.5f;
     public float musicMaxVolume = 0.8f;
 
+	private bool coroutineStarted = false;
     private AudioSource current;
+	private bool gameEnded = false;
 
     void Start()
     {
-        beatCounter = GetComponent<BeatCount>();
+		beatCounter = GetComponent<BeatCount>();
         current = Menu;
-    }
+		End.EndEvent += EndGame;
+	}
 
     public void StartSound()
     {
@@ -29,12 +32,16 @@ public class SoundManager :  Singleton<SoundManager>{
 
     public void SetSound(AudioSource next)
     {
-        StartCoroutine(SetSound_Coroutine(current,next));
-        current = next;
+		if (!coroutineStarted && next != current && !gameEnded)
+		{
+			StartCoroutine(SetSound_Coroutine(current, next));
+			current = next;
+		}
     }
 
     IEnumerator SetSound_Coroutine(AudioSource old,AudioSource next)
     {
+		coroutineStarted = true;
         float t=0;
         while(t<fadeTime)
         {
@@ -46,8 +53,12 @@ public class SoundManager :  Singleton<SoundManager>{
         old.volume = 0.0f;
         next.volume = musicMaxVolume;
 
-
+		coroutineStarted = false;
     }
     
+	void EndGame() {
+		SetSound(Far);
+		gameEnded = true;
+    }
 }
 

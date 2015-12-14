@@ -27,7 +27,8 @@ public class MoveCamera : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-		lerpPosValue = 0f;
+		End.EndEvent += EndGame;
+        lerpPosValue = 0f;
 		lerpZoomValue = 0f;
 		StartCoroutine(changeCamera());
 	}
@@ -67,43 +68,6 @@ public class MoveCamera : MonoBehaviour
             SoundManager.Instance.SetSound(SoundManager.Instance.Close);
         }
     }
-
-	IEnumerator changeCamera()
-	{
-		while (true)
-		{
-			if (oldZoom != currentZoom)
-			{
-				if (lerpZoomValue <= 0.99f)
-				{
-					lerpZoomValue += 0.01f;
-					Camera.main.orthographicSize = Mathf.Lerp(camSize[oldZoom], camSize[currentZoom], lerpZoomValue);
-				}
-				else if (lerpZoomValue != 1f)
-				{
-					Camera.main.orthographicSize = Mathf.Lerp(camSize[oldZoom], camSize[currentZoom], lerpZoomValue);
-					oldZoom = currentZoom;
-					lerpZoomValue = 1f;
-				}
-			}
-			else if (currentZoom != targetZoom)
-			{
-				currentZoom = targetZoom;
-				lerpZoomValue = 0f;
-				lerpPosValue = 0f;
-            }
-
-			if (lerpPosValue < 1f)
-			{
-				lerpPosValue += 0.005f;
-
-			}
-			transform.parent.position = Vector3.Lerp(transform.parent.position, targetPos, lerpPosValue);
-			yield return new WaitForSeconds(0.01f);
-		}
-	}
-
-
 
 	private int GetTargetZoomLevel()
 	{
@@ -180,6 +144,74 @@ public class MoveCamera : MonoBehaviour
 		if (zoom == 2)
 			posY -= 2;
 		return posY;
+	}
 
+	IEnumerator changeCamera()
+	{
+		while (true)
+		{
+			if (oldZoom != currentZoom)
+			{
+				if (lerpZoomValue <= 0.99f)
+				{
+					lerpZoomValue += 0.01f;
+					Camera.main.orthographicSize = Mathf.Lerp(camSize[oldZoom], camSize[currentZoom], lerpZoomValue);
+				}
+				else if (lerpZoomValue != 1f)
+				{
+					Camera.main.orthographicSize = Mathf.Lerp(camSize[oldZoom], camSize[currentZoom], lerpZoomValue);
+					oldZoom = currentZoom;
+					lerpZoomValue = 1f;
+				}
+			}
+			else if (currentZoom != targetZoom)
+			{
+				currentZoom = targetZoom;
+				lerpZoomValue = 0f;
+				lerpPosValue = 0f;
+			}
+
+			if (lerpPosValue < 1f)
+			{
+				lerpPosValue += 0.005f;
+
+			}
+			transform.parent.position = Vector3.Lerp(transform.parent.position, targetPos, lerpPosValue);
+			yield return new WaitForSeconds(0.01f);
+		}
+	}
+
+	public void EndGame() {
+		StopAllCoroutines();
+
+		StartCoroutine(cameraFin());
+	}
+
+	IEnumerator cameraFin() {
+		float zoomFin = 210;
+		float prevZoom = Camera.main.orthographicSize;
+
+		Vector3 endPos = new Vector3(0, 202, 0);
+		Vector3 prevPos = Camera.main.transform.position;
+
+		Transform parentCamera = Camera.main.transform.parent;
+
+		lerpZoomValue = 0f;
+		lerpPosValue = 0f;
+        while (lerpPosValue < 1f && lerpZoomValue < 1f)
+		{
+			if (lerpZoomValue < 1f)
+			{
+				lerpZoomValue += 0.005f;
+				Camera.main.orthographicSize = Mathf.Lerp(prevZoom, zoomFin, lerpZoomValue);
+			}
+			if (lerpPosValue < 1f)
+			{
+				lerpPosValue += 0.003f;
+				parentCamera.position = Vector3.Lerp(parentCamera.position, endPos, lerpPosValue);
+			}
+			
+			yield return new WaitForSeconds(0.01f);
+		}
 	}
 }

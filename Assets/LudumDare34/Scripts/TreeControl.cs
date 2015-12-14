@@ -23,7 +23,7 @@ public class TreeControl : MonoBehaviour {
     private string playerHorizontal;
     private string playerFire;
 
-	public float[] speedStates =  {0.8f, 1.1f, 1.5f};
+	public float[] speedStates =  {1f, 1.35f, 1.65f};
 
 	// Use this for initialization
 	void Start()
@@ -104,8 +104,12 @@ public class TreeControl : MonoBehaviour {
         if(other.gameObject.tag == "PowerUp")
         {
             currentpowerUp = other.gameObject.GetComponent<Pastille>();
-        }
-    }
+        }else if (other.gameObject.tag == "Fin")
+		{
+			Debug.Log("fin");
+			End.TriggerEndGame();
+		}
+	}
 
     void OnTriggerExit2D(Collider2D other)
     {

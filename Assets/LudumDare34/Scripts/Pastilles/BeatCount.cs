@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class BeatCount : MonoBehaviour {
 
@@ -25,6 +26,7 @@ public class BeatCount : MonoBehaviour {
         expectedTime = timeOffset;
 		if (waitCountBeat)
 			StartCoroutine(waitFirstBeat());
+		End.EndEvent += EndGame;
 	}
 
 	IEnumerator waitFirstBeat()
@@ -35,6 +37,7 @@ public class BeatCount : MonoBehaviour {
 
 	IEnumerator resetBeat()
 	{
+		expectedTime = 0f;
 		waitCountBeat = true;
 		yield return new WaitForSeconds(timeOffset);
 		BeatEvent();
@@ -63,6 +66,14 @@ public class BeatCount : MonoBehaviour {
         }
 	}
 
+	public bool isOnBeat() {
+		if( Mathf.Abs( Mo.time - expectedTime) < 0.1f)
+			return true;
+		return false;
+	}
 
+	public void EndGame() {
+		canCountBeat = false;
+	}
 
 }

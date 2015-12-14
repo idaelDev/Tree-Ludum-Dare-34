@@ -1,18 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Pastille : MonoBehaviour {
 
     public PastilleType pType;
 	public BonusType bType;
 
-
 	public delegate void PastilleGrab_delegate(PastilleType type);
     public event PastilleGrab_delegate PastilleGrabEvent;
+
+	
 
 	void Start()
 	{
 		BeatCount.BeatEvent += OnBeat;
+		End.EndEvent += EndGame;
 	}
 
     public void Catched()
@@ -27,6 +30,15 @@ public class Pastille : MonoBehaviour {
 		if (GetComponentInChildren<Animator>())
 			GetComponentInChildren<Animator>().Play("Rotate");
 
+	}
+
+	void EndGame() {
+		Debug.Log("endPastille");
+		try {
+			Destroy(this.gameObject);
+		} catch (Exception e) {
+			return;
+		}
 	}
 
 	/*void OnBecameInvisible()
@@ -53,5 +65,6 @@ public enum BonusType
 {
 	FAST,
 	NORMAL,
-	SLOW
+	SLOW,
+	STOP
 }
