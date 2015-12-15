@@ -39,16 +39,28 @@ public class MoveCamera : MonoBehaviour
 	{
 		if (GameManager.Instance.nbPlayers == 2)
 		{
-            if (GameManager.Instance.gameStarted)
-            {
-                int newZoom = GetTargetZoomLevel();
-                if (newZoom != targetZoom)
-                {
-                    targetZoom = newZoom;
-                }
-                SetAudioZoom();
-            }
-		}
+			if (GameManager.Instance.gameStarted)
+			{
+				int newZoom = GetTargetZoomLevel();
+				if (newZoom != targetZoom)
+				{
+					targetZoom = newZoom;
+				}
+				SetAudioZoom();
+			}
+		} else {
+			if (p1 == null)
+				p1 = p2;
+			if (GameManager.Instance.gameStarted)
+			{
+				int newZoom = 1;
+				if (newZoom != targetZoom)
+				{
+					targetZoom = newZoom;
+				}
+				SetAudioZoom();
+			}
+        }
 
 		targetPos = new Vector3(
 			PositionXInGamezone(currentZoom),

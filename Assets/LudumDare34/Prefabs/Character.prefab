@@ -46,7 +46,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: -7.30000019, z: 0}
+  m_LocalPosition: {x: -.400000006, y: -8.32999992, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 488332}
@@ -386,7 +386,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 0, z: 0}
   angle: 0
-  numPlayer: 0
+  numPlayer: 1
   rotateSpeed: .5
   currentpowerUp: {fileID: 0}
   nodeObject: {fileID: 136858, guid: da1666eeb6d5ad34bb3dc9daa5c0de64, type: 2}
@@ -409,6 +409,8 @@ MonoBehaviour:
   paint:
   - {fileID: 122926, guid: aeb904bd5da5f31408843ba354163ef7, type: 2}
   - {fileID: 129320, guid: 2071e939c5ce50448bd5bb6a419059a4, type: 2}
+  distanceSpawnMin: 30
+  distanceSpawnMax: 45
   wait: .189999998
 --- !u!212 &21222230
 SpriteRenderer:

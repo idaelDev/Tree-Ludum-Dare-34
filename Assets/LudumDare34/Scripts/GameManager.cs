@@ -15,6 +15,10 @@ public class GameManager : Singleton<GameManager> {
 	public GameObject[] branches;
 	public GameObject[] simpleBranches;
 
+	public GameObject[] flowersFeuilles;
+	public GameObject[] animalsFeuilles;
+	public GameObject[] fruitsFeuilles;
+
 	public void StartGame()
     {
 		if (!gameStarted)
@@ -59,5 +63,19 @@ public class GameManager : Singleton<GameManager> {
 				return null;
         }
 
+	}
+
+	internal GameObject[] getAssetsFeuilles(PastilleType feuilleType) {
+		switch (feuilleType)
+		{
+			case PastilleType.FLOWER:
+				return flowersFeuilles;
+			case PastilleType.FRUIT:
+				return fruitsFeuilles;
+			case PastilleType.ANIMAL:
+				return animalsFeuilles;
+			default:
+				return null;
+		}
 	}
 }

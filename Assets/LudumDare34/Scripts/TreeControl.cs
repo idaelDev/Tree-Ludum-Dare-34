@@ -69,7 +69,7 @@ public class TreeControl : MonoBehaviour
                     speed = speedStates[(int)currentpowerUp.bType];
 
 					GetComponent<Draw>().drawBranches(currentNode, currentpowerUp.pType, onBeat);
-
+					GetComponent<Draw>().feuillesType = currentpowerUp.pType;
 
 
 					currentpowerUp.Catched();
