@@ -202,6 +202,7 @@ public class MoveCamera : MonoBehaviour
 	}
 
 	public void EndGame() {
+		End.EndEvent -= EndGame;
 		StopAllCoroutines();
 
 		StartCoroutine(cameraFin());

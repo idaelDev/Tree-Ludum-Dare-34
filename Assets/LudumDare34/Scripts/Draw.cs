@@ -12,7 +12,7 @@ public class Draw : MonoBehaviour
 	public int distanceSpawnMax = 40;
 
 	private Vector3 precPos;
-	private TreeControl tc;
+	private TreeControl treeControl;
 
 	public float wait = 0.1f;
 	private int cptBranches = 0;
@@ -24,35 +24,41 @@ public class Draw : MonoBehaviour
 	void Start()
 	{
 		nextBranch = UnityEngine.Random.Range(distanceSpawnMin, distanceSpawnMax);
-        if (node == null)
+        if (node == null && Application.isEditor)
 			Debug.Log("Pas de parent pour les brushes!");
 		precPos = Vector3.up;
-		tc = GetComponent<TreeControl>();
-		StartCoroutine(drawTree());
+		treeControl = GetComponent<TreeControl>();
+		StartCoroutine(drawTreeParts());
 	}
 
+	void Update() {
+		/*if(GameManager.Instance.gameStarted) {
+			float rot_z = Mathf.Atan2(treeControl.direction.y, treeControl.direction.x)*Mathf.Rad2Deg;
+			transform.rotation=Quaternion.Euler(0f, 0f, rot_z-90);
+		}*/
+	}
 
-	IEnumerator drawTree()
+	IEnumerator drawTreeParts()
 	{
 		while (true)
 		{
 			if (GameManager.Instance.gameStarted)
 			{
 				int ind = UnityEngine.Random.Range(0, paint.Length);
-				GameObject g = Instantiate(paint[ind]) as GameObject;
+				GameObject newTreePart = Instantiate(paint[ind]) as GameObject;
 
 				//g.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 4f);
 
-				g.transform.position = tc.transform.position + Vector3.right * UnityEngine.Random.value * 0.1f;
-				Vector3 dir = g.transform.position - precPos;
+				newTreePart.transform.position = treeControl.transform.position + Vector3.right * UnityEngine.Random.value * 0.1f;
+				Vector3 dir = newTreePart.transform.position - precPos;
 
-				g.transform.rotation = tc.transform.rotation;
-				precPos = g.transform.position;
+				newTreePart.transform.rotation = treeControl.transform.rotation;
+				precPos = newTreePart.transform.position;
 
-				g.transform.parent = node;
+				newTreePart.transform.parent = node;
 
-				float rot_z = Mathf.Atan2(tc.direction.y, tc.direction.x) * Mathf.Rad2Deg;
-				transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
+				//float rot_z = Mathf.Atan2(treeControl.direction.y, treeControl.direction.x) * Mathf.Rad2Deg;
+				//transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
 
 				cptBranches++;
 				if (cptBranches == nextBranch)

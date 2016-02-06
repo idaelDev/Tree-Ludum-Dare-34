@@ -4,7 +4,7 @@ using System;
 
 public class TreeControl : MonoBehaviour
 {
-
+	
 	public Vector3 direction;
 	public float angle = 0f;
 	private float speed = 1f;
@@ -56,7 +56,7 @@ public class TreeControl : MonoBehaviour
 	{
 		if (GameManager.Instance.gameStarted)
 		{
-			float rotate = Input.GetAxisRaw(playerHorizontal);
+			float rotate = Input.GetAxis(playerHorizontal);
 			//..
 			Rotation(rotate);
 
@@ -116,11 +116,20 @@ public class TreeControl : MonoBehaviour
 		Mathf.Cos(angle + Mathf.PI / 2),
 		Mathf.Sin(angle + Mathf.PI / 2),
 		0f);
+
+		Debug.Log( direction.x  );
+
 		direction.Normalize();
 
 		//..
 
 		this.transform.position += direction * Time.deltaTime * speed;
+		
+		//..
+		
+		float rot_z = Mathf.Atan2(direction.y, direction.x)*Mathf.Rad2Deg;
+			transform.rotation=Quaternion.Euler(0f, 0f, rot_z-90);
+		
 	}
 
 	void OnTriggerEnter2D(Collider2D other)

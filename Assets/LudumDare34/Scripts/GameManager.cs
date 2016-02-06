@@ -19,8 +19,13 @@ public class GameManager : Singleton<GameManager> {
 	public GameObject[] animalsFeuilles;
 	public GameObject[] fruitsFeuilles;
 
+	public void Awake() {
+		
+	}
+
 	public void StartGame()
     {
+		
 		if (!gameStarted)
 		{
 			End.EndEvent += EndGame;
@@ -38,6 +43,7 @@ public class GameManager : Singleton<GameManager> {
 
 
 	public void EndGame() {
+		End.EndEvent -= EndGame;
 		StartCoroutine(returnToMenu());
     }
 
