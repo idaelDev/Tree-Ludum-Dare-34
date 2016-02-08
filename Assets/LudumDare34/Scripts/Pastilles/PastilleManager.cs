@@ -77,9 +77,9 @@ public class PastilleManager : Singleton<PastilleManager> {
                     newCercle.transform.position += new Vector3(0f, 0.03f, 0f);
 					newCercle.transform.parent = buf.transform;
 					buf.GetComponent<Pastille>().bType = BonusType.FAST;
-				} /*else {
+				} else {
 					buf.GetComponent<Pastille>().bType = BonusType.NORMAL;
-				}*/
+				}
 				cpt = (cpt + 1) % 3;
 
 				pastilleLeft++;

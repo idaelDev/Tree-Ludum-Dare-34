@@ -23,6 +23,7 @@ public class Draw : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
+		End.EndEvent += EndGame;
 		nextBranch = UnityEngine.Random.Range(distanceSpawnMin, distanceSpawnMax);
         if (node == null && Application.isEditor)
 			Debug.Log("Pas de parent pour les brushes!");
@@ -124,6 +125,11 @@ public class Draw : MonoBehaviour
 			feuille.transform.localScale = newScale;
 		}
 
+	}
+
+	private void EndGame() {
+		End.EndEvent -= EndGame;
+		StopAllCoroutines();
 	}
 
 }

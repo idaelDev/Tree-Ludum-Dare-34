@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager> {
 
@@ -36,8 +37,9 @@ public class GameManager : Singleton<GameManager> {
 
 	void Update(){
 		if(canRestartGame) {
-			if(Input.anyKey || Input.GetButtonDown("Fire_p2") || Input.GetButtonDown("Fire_p2"))
-				Application.LoadLevel(0);
+
+			/*if(Input.GetKeyDown(KeyCode.Escape)|| Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("Fire_p2") || Input.GetButtonDown("Fire_p2"))
+				SceneManager.LoadScene(0, LoadSceneMode.Additive);*/
 		}
 	}
 
@@ -51,6 +53,7 @@ public class GameManager : Singleton<GameManager> {
 	{
 		yield return new WaitForSeconds(4f);
 		canRestartGame = true;
+		FindObjectOfType<MainMenuManager>().OnEnd();
     }
 
 	public GameObject[] getAssetsBranches(PastilleType type) {

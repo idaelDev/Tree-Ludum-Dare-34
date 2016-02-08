@@ -6,7 +6,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
 
 	public CanvasGroup MainCanvasGroup;
 	public CanvasGroup CreditsCanvasGroup;
-	public CanvasGroup TutorialCanvasGroup;
+	public CanvasGroup EndCanvasGroup;
 	public GameObject deletePlayer;
 
 	public int mainSceneId;
@@ -24,6 +24,8 @@ public class MainMenuManager : Singleton<MainMenuManager>
 	}
 
 	public void OnQuitGame() {
+		if(Application.isEditor)
+			Debug.Log("quitGame");
 		Application.Quit();
 	}
 
@@ -32,9 +34,9 @@ public class MainMenuManager : Singleton<MainMenuManager>
 		ShowCanvasGroup(CreditsCanvasGroup, true);
 	}
 
-	public void OnTutorial() {
+	public void OnEnd() {
 		HideAllCanvas();
-		ShowCanvasGroup(TutorialCanvasGroup, true);
+		ShowCanvasGroup(EndCanvasGroup, true);
 	}
 
 	public void OnMain() {
@@ -45,7 +47,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
 	void HideAllCanvas() {
 		ShowCanvasGroup(MainCanvasGroup, false);
 		ShowCanvasGroup(CreditsCanvasGroup, false);
-		ShowCanvasGroup(TutorialCanvasGroup, false);
+		ShowCanvasGroup(EndCanvasGroup, false);
 	}
 
 	void ShowCanvasGroup(CanvasGroup c, bool show) {

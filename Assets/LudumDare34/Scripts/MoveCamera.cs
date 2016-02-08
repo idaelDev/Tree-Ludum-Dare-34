@@ -8,6 +8,8 @@ public class MoveCamera : MonoBehaviour
 	//min: 2
 
 	public Transform p1, p2;
+	public float endZoom = 150;
+	public Vector3 endPos = new Vector3(0, 130, 0);
 
 	private int[] camSize = { 4, 10, 20 };
 	private int[] camPosMaxX = { 25, 13, 0 };
@@ -23,7 +25,6 @@ public class MoveCamera : MonoBehaviour
 	private float lerpPosValue = 0f;
 	private float lerpZoomValue = 0f;
 
-
 	// Use this for initialization
 	void Start()
 	{
@@ -35,7 +36,7 @@ public class MoveCamera : MonoBehaviour
 
 	// Update is called once per frame
 
-	void Update()
+	void FixedUpdate()
 	{
 		if (GameManager.Instance.nbPlayers == 2)
 		{
@@ -197,7 +198,7 @@ public class MoveCamera : MonoBehaviour
 
 			}
 			transform.parent.position = Vector3.Lerp(transform.parent.position, targetPos, lerpPosValue);
-			yield return new WaitForSeconds(0.01f);
+			yield return new WaitForFixedUpdate(); //waitforseconds(0.01f);
 		}
 	}
 
@@ -209,10 +210,8 @@ public class MoveCamera : MonoBehaviour
 	}
 
 	IEnumerator cameraFin() {
-		float zoomFin = 150;
 		float prevZoom = Camera.main.orthographicSize;
 
-		Vector3 endPos = new Vector3(0, 130, 0);
 		Vector3 prevPos = Camera.main.transform.position;
 
 		Transform parentCamera = Camera.main.transform.parent;
@@ -224,7 +223,7 @@ public class MoveCamera : MonoBehaviour
 			if (lerpZoomValue < 1f)
 			{
 				lerpZoomValue += 0.005f;
-				Camera.main.orthographicSize = Mathf.Lerp(prevZoom, zoomFin, lerpZoomValue);
+				Camera.main.orthographicSize = Mathf.Lerp(prevZoom, endZoom, lerpZoomValue);
 			}
 			if (lerpPosValue < 1f)
 			{

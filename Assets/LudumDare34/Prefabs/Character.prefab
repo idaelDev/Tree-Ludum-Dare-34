@@ -10,12 +10,12 @@ GameObject:
   - 4: {fileID: 400002}
   - 114: {fileID: 11487974}
   - 114: {fileID: 11451326}
-  - 58: {fileID: 5862080}
   - 50: {fileID: 5075578}
   - 82: {fileID: 8205236}
   - 82: {fileID: 8275758}
   - 82: {fileID: 8278362}
   - 82: {fileID: 8248354}
+  - 61: {fileID: 6143142}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -46,7 +46,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.400000006, y: -8.32999992, z: 0}
+  m_LocalPosition: {x: -0.4, y: 48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 488332}
@@ -59,7 +59,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 163214}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.0419999994, y: .372000009, z: 0}
+  m_LocalPosition: {x: 0.042, y: 0.372, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400002}
@@ -71,28 +71,30 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
+  m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: .0500000007
+  m_AngularDrag: 0.05
   m_GravityScale: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &5862080
-CircleCollider2D:
+--- !u!61 &6143142
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.36}
   serializedVersion: 2
-  m_Radius: .200000003
+  m_Size: {x: 0.82, y: 2}
 --- !u!82 &8205236
 AudioSource:
   m_ObjectHideFlags: 1
@@ -104,7 +106,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: .800000012
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -133,6 +135,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -143,6 +146,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -153,6 +157,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -163,6 +168,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!82 &8248354
 AudioSource:
   m_ObjectHideFlags: 1
@@ -203,6 +209,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -213,6 +220,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -223,6 +231,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -233,6 +242,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!82 &8275758
 AudioSource:
   m_ObjectHideFlags: 1
@@ -273,6 +283,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -283,6 +294,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -293,6 +305,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -303,6 +316,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!82 &8278362
 AudioSource:
   m_ObjectHideFlags: 1
@@ -314,7 +328,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: .800000012
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -343,6 +357,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -353,6 +368,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -363,6 +379,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -373,6 +390,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &11451326
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -387,14 +405,18 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   angle: 0
   numPlayer: 1
-  rotateSpeed: .5
+  rotateSpeed: 0.5
   currentpowerUp: {fileID: 0}
   nodeObject: {fileID: 136858, guid: da1666eeb6d5ad34bb3dc9daa5c0de64, type: 2}
   treeParent: {fileID: 0}
   speedStates:
-  - 1.20000005
-  - 1.45000005
-  - 1.70000005
+  - 1.2
+  - 1.45
+  - 1.7
+  avatar:
+  - {fileID: 21300000, guid: bf1dfb3189f44e24ca92e124795d911d, type: 3}
+  - {fileID: 21300000, guid: 18206c5a812071f4c8ba66e50fbeaabf, type: 3}
+  - {fileID: 21300000, guid: 64ba3138fda464242b0b74a53d7b8a49, type: 3}
 --- !u!114 &11487974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -411,7 +433,8 @@ MonoBehaviour:
   - {fileID: 129320, guid: 2071e939c5ce50448bd5bb6a419059a4, type: 2}
   distanceSpawnMin: 30
   distanceSpawnMax: 45
-  wait: .189999998
+  wait: 0.19
+  feuillesType: 4
 --- !u!212 &21222230
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -430,14 +453,18 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 85
   m_Sprite: {fileID: 21300000, guid: 18206c5a812071f4c8ba66e50fbeaabf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
