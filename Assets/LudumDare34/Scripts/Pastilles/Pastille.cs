@@ -36,7 +36,8 @@ public class Pastille : MonoBehaviour {
 	void EndGame() {
 		BeatCount.BeatEvent -= OnBeat;
 		End.EndEvent -= EndGame;
-		Debug.Log("endPastille");
+		if(GameManager.Instance.verbose)
+			Debug.Log("endPastille");
 		try {
 			Destroy(this.gameObject);
 		} catch (Exception e) {

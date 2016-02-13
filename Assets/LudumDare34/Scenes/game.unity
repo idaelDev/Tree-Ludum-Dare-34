@@ -322,6 +322,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 11492550, guid: 0d1cc563466c08d49b35628c7bee7315, type: 2}
+      propertyPath: verbose
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0d1cc563466c08d49b35628c7bee7315, type: 2}
   m_IsPrefabParent: 0
@@ -744,11 +748,11 @@ RectTransform:
   - {fileID: 864287765}
   m_Father: {fileID: 1840484011}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -278.4, y: -192.37}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.0000013869, y: 0.050014496}
   m_SizeDelta: {x: 248.2, y: 65.155}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.0000000055879354, y: 0.00000018626451}
 --- !u!114 &378220359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1178,7 +1182,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 542628219}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071069, w: 0.70710677}
   m_LocalPosition: {x: 50, y: 150, z: -0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1315,7 +1319,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 603714733}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071069, w: 0.70710677}
   m_LocalPosition: {x: -50, y: 150, z: -0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2771,6 +2775,38 @@ Prefab:
     - target: {fileID: 400002, guid: 03eb339b361d2474dab016fcf9b6a0b9, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8205236, guid: 03eb339b361d2474dab016fcf9b6a0b9, type: 2}
+      propertyPath: panLevelCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8205236, guid: 03eb339b361d2474dab016fcf9b6a0b9, type: 2}
+      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8275758, guid: 03eb339b361d2474dab016fcf9b6a0b9, type: 2}
+      propertyPath: panLevelCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8275758, guid: 03eb339b361d2474dab016fcf9b6a0b9, type: 2}
+      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8278362, guid: 03eb339b361d2474dab016fcf9b6a0b9, type: 2}
+      propertyPath: panLevelCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8278362, guid: 03eb339b361d2474dab016fcf9b6a0b9, type: 2}
+      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248354, guid: 03eb339b361d2474dab016fcf9b6a0b9, type: 2}
+      propertyPath: panLevelCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248354, guid: 03eb339b361d2474dab016fcf9b6a0b9, type: 2}
+      propertyPath: reverbZoneMixCustomCurve.m_RotationOrder
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03eb339b361d2474dab016fcf9b6a0b9, type: 2}

@@ -120,7 +120,7 @@ public class PastilleManager : Singleton<PastilleManager> {
     {
         zoneValue = Mathf.Min(Random.Range(minZoneValue, maxZoneValue), pastilleLeft);
         currentZonePastilleNb = 0;
-		if(Application.isEditor)
+		if(GameManager.Instance.verbose)
 			Debug.Log("New Zone : " + zoneValue);
     }
 }

@@ -25,7 +25,7 @@ public class Draw : MonoBehaviour
 	{
 		End.EndEvent += EndGame;
 		nextBranch = UnityEngine.Random.Range(distanceSpawnMin, distanceSpawnMax);
-        if (node == null && Application.isEditor)
+        if (node == null && GameManager.Instance.verbose)
 			Debug.Log("Pas de parent pour les brushes!");
 		precPos = Vector3.up;
 		treeControl = GetComponent<TreeControl>();

@@ -24,7 +24,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
 	}
 
 	public void OnQuitGame() {
-		if(Application.isEditor)
+		if(GameManager.Instance.verbose)
 			Debug.Log("quitGame");
 		Application.Quit();
 	}

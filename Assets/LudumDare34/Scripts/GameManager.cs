@@ -10,6 +10,8 @@ public class GameManager : Singleton<GameManager> {
 
 	bool canRestartGame = false;
 
+	public bool verbose = false;
+
 	public GameObject[] flowers;
 	public GameObject[] animals;
 	public GameObject[] fruits;
