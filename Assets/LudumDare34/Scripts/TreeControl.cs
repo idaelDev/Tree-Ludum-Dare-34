@@ -66,11 +66,16 @@ public class TreeControl : MonoBehaviour {
 		}
 		while(true) {
 
-			float rotate = Input.GetAxis(playerHorizontal);
+			float rotate = 0;
+			if(Application.platform == RuntimePlatform.Android && Input.touchCount >= 1)
+				rotate += Input.GetTouch(0).deltaPosition.x*5;
+			else
+				rotate = Input.GetAxis(playerHorizontal);
 			//..
 			Rotation(rotate);
 
-			if(Input.GetButtonDown(playerFire)) {
+			if(Input.GetButtonDown(playerFire)
+				|| Input.touchCount >= 2) {
 				if(currentpowerUp!=null) {
 
 					bool onBeat = BeatCount.Instance.isOnBeat();
